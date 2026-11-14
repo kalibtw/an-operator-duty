@@ -1,0 +1,183 @@
+[gd_scene format=3 uid="uid://bwolncph3parl"]
+
+[ext_resource type="Script" uid="uid://b5bm0u2b70uva" path="res://scripts/moon.gd" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://b78eh7e02rw8e" path="res://scenes/resource.tscn" id="1_lnu2h"]
+[ext_resource type="Script" uid="uid://4pcg43ajt5sm" path="res://scripts/sun.gd" id="1_p57ef"]
+[ext_resource type="Script" uid="uid://cgwtqgingqg43" path="res://scripts/game.gd" id="1_vtaks"]
+[ext_resource type="PackedScene" uid="uid://bihjc1shah80j" path="res://scenes/mission.tscn" id="1_yqjtg"]
+[ext_resource type="Material" uid="uid://dyy28wi2ayfxf" path="res://assets/3d/MoonTexture.tres" id="2_iywne"]
+[ext_resource type="PackedScene" uid="uid://cwlvmxc4hugcc" path="res://scenes/upgrade.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cjkqolujpsdmc" path="res://scenes/mission_marker.tscn" id="3_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://ktx710eaflng" path="res://assets/moneyResource.png" id="5_0tnpc"]
+[ext_resource type="Material" uid="uid://dula64p76nm7w" path="res://assets/3d/wallTexture.tres" id="7_dinhu"]
+[ext_resource type="PackedScene" uid="uid://nlyconu7ca21" path="res://assets/3d/wall.glb" id="11_dinhu"]
+[ext_resource type="PackedScene" uid="uid://ch5os2of3mhkb" path="res://scenes/popup_panel.tscn" id="11_kvpfn"]
+[ext_resource type="AudioStream" uid="uid://cr553knm1ffuh" path="res://assets/Космотема2.mp3" id="13_kvuet"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mm1bc"]
+material = ExtResource("2_iywne")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mti6b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4kxuq"]
+size = Vector3(2.6645625, 26.999756, 29.309021)
+
+[node name="Game" type="Node2D" unique_id=87374330]
+script = ExtResource("1_vtaks")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1151685690]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1591309024]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=86995026]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=41939947]
+layout_mode = 2
+
+[node name="Moon&Resources&Missions" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=869622912]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.5
+
+[node name="Moon&Resources" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions" unique_id=1917986648]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MoonPlace" type="SubViewportContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources" unique_id=1296809021]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/MoonPlace" unique_id=876364226]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(250, 250)
+render_target_update_mode = 4
+
+[node name="Moon" type="Node3D" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/MoonPlace/SubViewport" unique_id=1440795568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+script = ExtResource("1_lbhrr")
+mission_marker_scene = ExtResource("3_kvpfn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/MoonPlace/SubViewport/Moon" unique_id=2086594934]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("SphereMesh_mm1bc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/MoonPlace/SubViewport/Moon" unique_id=778541231 groups=["moon_clickable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/MoonPlace/SubViewport/Moon/StaticBody3D" unique_id=1858523850]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_mti6b")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/MoonPlace/SubViewport" unique_id=1548356063]
+transform = Transform3D(0.9063078, -0.29883626, 0.29883626, 0, 0.7071068, 0.7071068, -0.4226183, -0.6408564, 0.6408564, 5, 5, 5)
+script = ExtResource("1_p57ef")
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/MoonPlace/SubViewport" unique_id=2142363465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="wall" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/MoonPlace/SubViewport" unique_id=2103598440 instance=ExtResource("11_dinhu")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/MoonPlace/SubViewport/wall" unique_id=1858343254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.51691914, -0.9389162, -0.023374893)
+material_override = ExtResource("7_dinhu")
+mesh = SubResource("BoxMesh_4kxuq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources" unique_id=1337194852]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Resources" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/VBoxContainer" unique_id=435881816]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ResourcePage1" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/VBoxContainer/Resources" unique_id=942606200]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Money" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/VBoxContainer/Resources/ResourcePage1" unique_id=881907771 instance=ExtResource("1_lnu2h")]
+layout_mode = 2
+
+[node name="ResourceIcon" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/VBoxContainer/Resources/ResourcePage1/Money" index="0" unique_id=2023433019]
+texture = ExtResource("5_0tnpc")
+expand_mode = 1
+
+[node name="ResourceName" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/VBoxContainer/Resources/ResourcePage1/Money" index="3" unique_id=195391832]
+text = "money"
+
+[node name="ResourcePage2" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/VBoxContainer/Resources" unique_id=704627578]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/VBoxContainer" unique_id=498476944]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/VBoxContainer" unique_id=276779259]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="MissionList" type="ScrollContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions" unique_id=631549062]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Missions" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/MissionList" unique_id=347364996]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Mission" parent="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/MissionList/Missions" unique_id=1895925492 instance=ExtResource("1_yqjtg")]
+layout_mode = 2
+
+[node name="Rocket&Upgrades" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=59950203]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RocketPlace" type="ColorRect" parent="CanvasLayer/MarginContainer/HBoxContainer/Rocket&Upgrades" unique_id=900552026]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.56028485, 0.56028485, 0.56028485, 1)
+
+[node name="UpgradeList" type="ScrollContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Rocket&Upgrades" unique_id=2041462479]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Upgrades" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Rocket&Upgrades/UpgradeList" unique_id=291633352]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Upgrade" parent="CanvasLayer/MarginContainer/HBoxContainer/Rocket&Upgrades/UpgradeList/Upgrades" unique_id=688277671 instance=ExtResource("2_lnu2h")]
+layout_mode = 2
+
+[node name="PopupPanel" parent="CanvasLayer" unique_id=1781954397 instance=ExtResource("11_kvpfn")]
+visible = false
+hdr_output_requested = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1588028719]
+stream = ExtResource("13_kvuet")
+autoplay = true
+parameters/looping = true
+
+[editable path="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/Moon&Resources/VBoxContainer/Resources/ResourcePage1/Money"]
+[editable path="CanvasLayer/MarginContainer/HBoxContainer/Moon&Resources&Missions/MissionList/Missions/Mission"]
+[editable path="CanvasLayer/MarginContainer/HBoxContainer/Rocket&Upgrades/UpgradeList/Upgrades/Upgrade"]

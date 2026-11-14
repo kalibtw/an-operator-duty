@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cjkqolujpsdmc"]
+
+[ext_resource type="Script" uid="uid://bhvplo0akuvh4" path="res://scripts/mission_marker.gd" id="1_a1f5b"]
+[ext_resource type="PackedScene" uid="uid://ghc2851fjjiu" path="res://assets/3d/Flag.glb" id="2_lva75"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_miq3f"]
+
+[node name="MissionMarker" type="Area3D" unique_id=1182871204]
+script = ExtResource("1_a1f5b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=890721035]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_miq3f")
+
+[node name="Flag" parent="." unique_id=630835913 instance=ExtResource("2_lva75")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, -0.15107247, 0)

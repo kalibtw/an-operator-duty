@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ch5os2of3mhkb"]
+
+[ext_resource type="Script" uid="uid://b8m55677ly6nf" path="res://scripts/popup_panel.gd" id="1_5h2f2"]
+
+[node name="PopupPanel" type="PopupPanel" unique_id=1781954397]
+oversampling_override = 1.0
+size = Vector2i(300, 200)
+visible = true
+script = ExtResource("1_5h2f2")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=997695830]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 296.0
+offset_bottom = 196.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2029322132]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1790472485]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Info" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=423249141]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Initiate the mission?"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=672801366]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="noButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=333418481]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+text = "no
+"
+
+[node name="yesButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=2029209986]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 6
+text = "yes"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/noButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/yesButton" to="." method="_on_yes_button_pressed"]

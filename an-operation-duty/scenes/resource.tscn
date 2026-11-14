@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b78eh7e02rw8e"]
+
+[ext_resource type="FontFile" uid="uid://baf3es3njpxi7" path="res://assets/mingliu.ttf" id="1_ca17w"]
+
+[node name="Resource" type="HBoxContainer" unique_id=881907771]
+custom_minimum_size = Vector2(0, 40)
+
+[node name="ResourceIcon" type="TextureRect" parent="." unique_id=2023433019]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="." unique_id=128798272]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Amount" type="Label" parent="." unique_id=249048809]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ca17w")
+text = "1.000.000"
+
+[node name="ResourceName" type="Label" parent="." unique_id=195391832]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ca17w")
+text = "resource"

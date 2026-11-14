@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bihjc1shah80j"]
+
+[ext_resource type="FontFile" uid="uid://baf3es3njpxi7" path="res://assets/mingliu.ttf" id="1_01qru"]
+
+[node name="Mission" type="HBoxContainer" unique_id=1895925492]
+custom_minimum_size = Vector2(0, 100)
+
+[node name="MissionIcon" type="ColorRect" parent="." unique_id=1424333646]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(0.86552525, 0.6630485, 0.45679593, 1)
+
+[node name="VSeparator" type="VSeparator" parent="." unique_id=1963765824]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Information" type="VBoxContainer" parent="." unique_id=1287431988]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MissionNo&RocketType" type="Label" parent="Information" unique_id=4764946]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_01qru")
+text = "mission 1 | rocket type"
+
+[node name="ResourcesUsed" type="Label" parent="Information" unique_id=995986602]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5370987, 0.5370987, 0.5370987, 1)
+theme_override_fonts/font = ExtResource("1_01qru")
+theme_override_font_sizes/font_size = 12
+text = "resources used:"
+
+[node name="ProgressLabel" type="Label" parent="Information" unique_id=1996748009]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_01qru")
+text = "Progress:"
+
+[node name="MissionCompletedBar" type="ProgressBar" parent="Information" unique_id=1048243740]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_01qru")

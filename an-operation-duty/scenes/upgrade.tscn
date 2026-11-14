@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cwlvmxc4hugcc"]
+
+[ext_resource type="Script" uid="uid://dq62qh6t1q0xs" path="res://scripts/upgrade.gd" id="1_b2g4b"]
+[ext_resource type="FontFile" uid="uid://baf3es3njpxi7" path="res://assets/mingliu.ttf" id="1_xsw34"]
+
+[node name="Upgrade" type="HBoxContainer" unique_id=688277671]
+custom_minimum_size = Vector2(0, 100)
+script = ExtResource("1_b2g4b")
+
+[node name="UpgradeIcon" type="TextureRect" parent="." unique_id=1074132735]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
+
+[node name="VSeparator" type="VSeparator" parent="." unique_id=857566963]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Info" type="VBoxContainer" parent="." unique_id=657111422]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpgradeName" type="Label" parent="Info" unique_id=1138338245]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xsw34")
+text = "upgrade1"
+
+[node name="Cost" type="Label" parent="Info" unique_id=20570381]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58456355, 0.58456355, 0.58456355, 1)
+theme_override_fonts/font = ExtResource("1_xsw34")
+theme_override_font_sizes/font_size = 12
+text = "cost:"
+
+[node name="Description" type="Label" parent="Info" unique_id=306208604]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_xsw34")
+text = "description"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
